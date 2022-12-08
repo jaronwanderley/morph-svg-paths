@@ -1,5 +1,5 @@
 # Morph SVG Paths
-A Tiny ~1.4Kb function to morph between string paths with same commands. The package expose two functions to u
+A Tiny ~1.4Kb function to morph between string paths with same commands. The package expose two functions to use.
 ## Example
 To see a example in use go to [example](https://jaronwanderley.github.io/morph-svg-paths)
 
