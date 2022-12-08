@@ -9,7 +9,7 @@ export default defineConfig({
     minify: 'terser',
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
-      name: 'morphSVGPaths',
+      name: 'MorphSVGPaths',
       fileName: 'morph-svg-paths',
       formats: ['es', 'umd', 'iife'],
     },
