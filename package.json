@@ -1,7 +1,7 @@
 {
-  "name": "morph-svg-paths",
+  "name": "@jrnwn/morph-svg-paths",
   "type": "module",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A Tiny ~1.4Kb function to morph between SVG paths with same commands.",
   "author": "Jaron Wanderley",
   "license": "MIT",
@@ -19,6 +19,18 @@
       "import": "./dist/morph-svg-paths.js"
     }
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaronwanderley/morph-svg-paths.git"
+  },
+  "keywords": [
+    "path",
+    "svg path",
+    "svg d",
+    "morph",
+    "morph path",
+    "morph svg"
+  ],
   "main": "./dist/morph-svg-paths.umd.cjs",
   "module": "./dist/morph-svg-paths.js",
   "unpkg": "./dist/morph-svg-paths.iife.js",
