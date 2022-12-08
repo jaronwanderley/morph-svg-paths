@@ -45,3 +45,7 @@ const values = [1,2,3,4,5]
 const percentages = [0, .1, .2, .3]
 console.log(blendValues(values, percentages))
 ```
+
+## License
+
+[MIT](./LICENSE.md) License © 2022 [Jaron Wanderley](https://github.com/jaronwanderley)
