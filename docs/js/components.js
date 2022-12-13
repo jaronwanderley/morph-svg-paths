@@ -4,18 +4,18 @@ import { toHtml } from './markdown.js'
 
 export function Body() {
   return {
+
     isDark: platform().isDark,
     showSheet: false,
     explanation: '',
-    github: '',
+    repository: 'jaronwanderley/morph-svg-paths',
     version: '0.0.0',
     async loadData() {
+      const github = `https://raw.githubusercontent.com/${this.repository}`
       try {
-        const projectData = await loadJson('../../package.json')
-        this.github = projectData.repository.url
-          .replace(/git\+(.+?)\.git/g, '$1')
+        const projectData = await loadJson(`${github}/main/package.json`)
         this.version = projectData.version
-        const text = await loadText('../../README.md')
+        const text = await loadText(`${github}/main/README.md`)
         const howTo = text
           .replaceAll('\r', '\n')
           .replace(/(\n## Example\n(?:.|\n)+?)\n *?#/g, '\n#')
