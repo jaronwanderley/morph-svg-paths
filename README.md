@@ -5,25 +5,32 @@ To see a example in use go to [example](https://jaronwanderley.github.io/morph-s
 
 ## Install
 ### Module
+
 ```
 npm i @jrnwn/morph-svg-paths
 ```
-#### CDN
+
+### CDN
 
 ```html
 <script src="https://unpkg.com/@jrnwn/morph-svg-paths"><script>
 ```
 
-### How to use
-#### Module
+## How to use
+### Module
+
 ```javascript
 import { morphPaths, blendValues } from '@jrnwn/morph-svg-paths'
 ```
-#### CDN
+
+### CDN
+
 ```javascript
 const { morphPaths, blendValues } = MorpSVGPaths
 ```
-#### Use it 
+
+### Use it
+
 ```javascript
 const iconStates = [
   'm 0 0 c -2.6 -6.4 -8.7 -10.5 -15.6 -10.5 c -9.3 0   -16.8 7.5  -16.8 16.8 c 0   9.3 7.5  16.8 16.8 16.8 c 6.9 0   13  -4.2  15.6 -10.5 c 2.6  6.4  8.7   10.5 15.6  10.5 c 9.3 0 16.8 -7.5 16.8 -16.8     c  0   -9.3 -7.5  -16.8 -16.8 -16.8 c -6.9  0   -13    4.2  -15.6  10.5 z',
