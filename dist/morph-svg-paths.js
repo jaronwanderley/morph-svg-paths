@@ -3,7 +3,7 @@ function morphPaths(paths = []) {
   const needMsg = (elements, toBe) => `${elements} need to ${toBe}!`;
   const emptySpace = " ";
   const toLowerCase = (value) => value.toLowerCase();
-  const parsePath = (value) => value.replace(/,/g, emptySpace).replace(/$/g, emptySpace).replace(/ *([a-zA-Z]) */g, "$1").replace(/(.*) +$/g, "$1").replace(/([0-9]+)-/g, "$1 -").replace(/ *(a-zA-Z) */g, "$1").replace(/ *( ) */g, "$1").replace(/\s{1,}/g, emptySpace).replace(/ ($)/g, "$1").match(/[a-zA-Z][0-9 .-]*/g)?.filter(([command]) => "mlthvcsqaz".split("").includes(toLowerCase(command))).map(([command, ...values]) => ({
+  const parsePath = (value) => value.replace(/,/g, emptySpace).replace(/$/g, emptySpace).replace(/ *([a-zA-Z]) */g, "$1").replace(/(.*) +$/g, "$1").replace(/([0-9]+)-/g, "$1 -").replace(/ *(a-zA-Z) */g, "$1").replace(/ *( ) */g, "$1").replace(/\s{1,}/g, emptySpace).replace(/ ($)/g, "$1").match(/[a-zA-Z][0-9 .-]*/g)?.filter(([command]) => "mlthvcsqaz".includes(toLowerCase(command))).map(([command, ...values]) => ({
     command,
     values: values.join("").split(emptySpace).map((value2) => +value2)
   }));

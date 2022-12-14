@@ -1,7 +1,7 @@
 {
   "name": "@jrnwn/morph-svg-paths",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A Tiny ~1.4Kb function to morph between SVG paths with same commands.",
   "author": "Jaron Wanderley",
   "license": "MIT",
