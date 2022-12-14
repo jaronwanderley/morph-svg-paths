@@ -22,13 +22,14 @@
 
   <script type="module">
     import { createApp } from 'https://unpkg.com/petite-vue?module'
-    import { windowSizeDirective } from './js/directives.js'
+    import { rippleDirective, windowSizeDirective } from './js/directives.js'
     import { Body, Morph } from './js/components.js'
 
     createApp({
       Body,
       Morph,
     })
+      .directive('ripple', rippleDirective)
       .directive('w-size', windowSizeDirective)
       .mount()
   </script>
@@ -44,19 +45,19 @@
     <nav class="flex flex-col items-center">
       <img src="./assets/jrnwn-logo.svg" alt="this is a jaron wanderley's logo" class="w-40">
       <ul class="flex list-none gap-2 pl-0 mt-0">
-        <li @click="showSheet = true"
+        <li @click="showSheet = true" v-ripple
           class="bg-base rounded-xl flex items-center px-4 py-3 transition duration-300 ease-out hover:text-orange-5 cursor-pointer">
-          How to
+          How to use it
           <svg width="24" height="24" class="ml-2 fill-none stroke-current stroke-2 stroke-round">
             <circle cx="12" cy="12" r="9"></circle>
             <line x1="12" y1="8" x2="12.01" y2="8"></line>
             <polyline points="11 12 12 12 12 16 13 16"></polyline>
           </svg>
         </li>
-        <a :href="'https://github.com/' + repository"
+        <a :href="'https://github.com/' + repository" v-ripple
           class="text-current no-underline bg-base rounded-xl flex items-center px-4 py-3 transition duration-300 ease-out hover:text-orange-5 cursor-pointer">
           <span class="hidden sm:inline">
-            Github
+            Github Page
           </span>
           <svg width="24" height="24" class="sm:ml-2 fill-none stroke-current stroke-2 stroke-round">
             <path
@@ -64,7 +65,7 @@
             </path>
           </svg>
         </a>
-        <a href="./test"
+        <a href="./test" v-ripple
           class="text-current no-underline bg-base rounded-xl flex items-center px-4 py-3 transition duration-300 ease-out hover:text-orange-5 cursor-pointer">
           <span class="hidden sm:inline">
             Test Coverage
@@ -76,10 +77,10 @@
             <path d="M9 12h2" />
           </svg>
         </a>
-        <li @click="isDark = !isDark"
+        <li @click="isDark = !isDark" v-ripple
           class="bg-base rounded-xl flex items-center px-4 py-3 transition duration-300 ease-out hover:text-orange-5 cursor-pointer">
           <span class="hidden sm:inline">
-            {{ isDark ? 'Off' : 'On' }}
+            Light {{ isDark ? 'Off' : 'On' }}
           </span>
           <svg width="24" height="24" class="sm:ml-2 fill-none stroke-current stroke-2 stroke-round">
             <path d="M9 16a5 5 0 1 1 6 0a3.5 3.5 0 0 0 -1 3a2 2 0 0 1 -4 0a3.5 3.5 0 0 0 -1 -3" />

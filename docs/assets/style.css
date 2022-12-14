@@ -5,6 +5,7 @@ body{margin:0;--p:#00aaff;--p-t:#0284c788;--bs:#fff;--bs-t:#fffa;--tc:#334155;--
 .bg-primary{background-color:var(--p);}
 .bg-base{background-color:var(--bs);}
 .bg-base-t{background-color:var(--bs-t);}
+*{-webkit-tap-highlight-color:#0000}
 a{color:var(--a);}
 [v-cloak]{display:none !important;}
 .stroke-round{stroke-linecap:round;stroke-linejoin:round;}
@@ -15,6 +16,10 @@ body,div {--bar:8px;--bar-start:0;--bar-end:0;}
 ::-webkit-scrollbar-thumb {box-shadow:inset 0 0 var(--bar) var(--bar) var(--p-t);border:2px solid transparent;border-radius:var(--bar);}
 ::-webkit-scrollbar-thumb:hover {box-shadow:inset 0 0 var(--bar) var(--bar) var(--p);border:1px solid transparent;}
 ::-webkit-scrollbar-button {display:none;}
+/* layer: Ripple directive */
+.ripple {width:0;height:0;border-radius:50%;background:#f47d1b9e;position:absolute;transform:scale(0);opacity:0;}
+.ripple-effect{animation:ripple .4s ease-in;}
+@keyframes ripple{0%{transfrom:scale(0);opacity:1;}100%{transform:scale(2.5);opacity:0;}}
 /* layer: markdown */
 .markdown code{background:#f0f0f0;color:navy;border-radius:2px;padding:2px;} 
 .markdown pre{background:#f0f0f0;margin:16px 0;border:1px solid #ddd;padding:8px;border-radius:4px;overflow-x:auto;}
