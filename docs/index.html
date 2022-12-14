@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="./assets/style.css">
 </head>
 
-<body v-scope="Body()" @vue:mounted="loadData" :class="{ dark: isDark, 'overflow-hidden': showSheet }"
+<body v-scope="Body()" @vue:mounted="loadData" :class="{ dark: isDark, light: !isDark, 'overflow-hidden': showSheet }"
   class="bg-base transition duration-300 ease-out">
   <!-- only using unoCSS on dev mode -->
   <!-- <script src="https://unpkg.com/@unocss/runtime@0.47.5/uno.global.js"></script> -->
