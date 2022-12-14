@@ -18,7 +18,6 @@ export function morphPaths(paths: String[] = []) {
     .replace(/ ($)/g, '$1')
     .match(/[a-zA-Z][0-9 .-]*/g)
     ?.filter(([command]) => 'mlthvcsqaz'
-      .split('')
       .includes(toLowerCase(command)))
     .map(([command, ...values]) => ({
       command,
