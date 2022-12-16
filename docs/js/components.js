@@ -1,5 +1,5 @@
 import { morphPaths } from 'https://unpkg.com/@jrnwn/morph-svg-paths@0.0.1/dist/morph-svg-paths.js?module'
-import { clamp, getDistance, loadJson, loadText, platform } from './utils.js'
+import { clamp, getDistance, loadJson, loadText, platform } from 'https://unpkg.com/@jrnwn/utils@0.0.1/dist/utils.iife.js'
 import { toHtml } from './markdown.js'
 
 export function Body() {
