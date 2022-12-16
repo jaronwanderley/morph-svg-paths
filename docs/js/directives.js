@@ -1,6 +1,6 @@
 import { createEl, getSelector, removeClass, setClass, setStyle, typeOf } from 'https://unpkg.com/@jrnwn/utils@0.0.1/dist/utils.js?module'
 
-export function rippleDirective(context) {
+export const rippleDirective = config => (context) => {
   const { el, exp, get, effect } = context
 
   effect(() => {
@@ -10,7 +10,8 @@ export function rippleDirective(context) {
       console.error(`The options of Ripple must be a Object! Got ${typeOptions}. Error on Element:\n${getSelector(el)}`)
       return
     }
-    const { set, start, end } = options || {}
+    const { set: configSet = 'ripple', start: configStart = 'ripple-before', end: configEnd = 'ripple-play' } = config || {}
+    const { set = configSet, start = configStart, end = configEnd } = options || {}
 
     setStyle(el, {
       position: 'relative',
@@ -32,7 +33,7 @@ export function rippleDirective(context) {
       // create a new ripple
       const ripple = createEl('span')
       ripple.setAttribute('ripple', true)
-      setClass(ripple, set || 'ripple')
+      setClass(ripple, set)
       if (start)
         setClass(ripple, start)
       el.appendChild(ripple)
@@ -47,7 +48,7 @@ export function rippleDirective(context) {
       setTimeout(() => {
         if (start)
           removeClass(ripple, start)
-        setClass(ripple, end || 'ripple-effect')
+        setClass(ripple, end)
       }, 5)
     }
 

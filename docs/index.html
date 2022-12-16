@@ -34,7 +34,11 @@
       Body,
       Morph,
     })
-      .directive('ripple', rippleDirective)
+      .directive('ripple', rippleDirective({
+        set: 'w-0 h-0 rounded-full bg-orange/50 absolute transition duration-600 ease-out',
+        start: 'scale-0 opacity-100',
+        end: 'scale-250 opacity-0',
+      }))
       .directive('w-size', windowSizeDirective)
       .mount()
   </script>
@@ -121,11 +125,7 @@
     <main v-scope="Morph()" class="flex-1 p-6 flex justify-center items-center">
       <div class="relative w-full h-full flex justify-center items-center">
         <div 
-          v-ripple="{
-            set: 'w-0 h-0 rounded-full bg-orange/50 absolute transition duration-600 ease-out', 
-            start: 'scale-0 opacity-100',
-            end: 'scale-250 opacity-0',
-          }" 
+          v-ripple 
           class="bg-blue-3/30 w-full aspect-square rounded-3 border-blue/50 border-3 backdrop-blur-sm shadow-inner shadow-blue-9/30"
           >
           <svg 
