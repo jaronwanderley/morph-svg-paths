@@ -1,4 +1,4 @@
-import { createEl, getSelector, removeClass, setClass, setStyle, typeOf } from 'https://unpkg.com/@jrnwn/utils@0.0.1/dist/utils.iife.js'
+import { createEl, getSelector, removeClass, setClass, setStyle, typeOf } from 'https://unpkg.com/@jrnwn/utils@0.0.1/dist/utils.js?module'
 
 export function rippleDirective(context) {
   const { el, exp, get, effect } = context
@@ -58,28 +58,28 @@ export function rippleDirective(context) {
 export function windowSizeDirective(context) {
   const { el, exp, get, effect } = context
 
-  effect(() => {
+  const update = () => {
+    const {
+      innerWidth: width,
+      innerHeight: height,
+    } = window
+    const isPortrait = width < height
+
+    Object.values(window._WZD)
+      .forEach((callBack) => {
+        callBack({
+          width,
+          height,
+          minSize: isPortrait ? width : height,
+          maxSize: isPortrait ? height : width,
+          isPortrait,
+          isLandscape: !isPortrait,
+        })
+      })
+  }
+  const setup = () => {
     const options = exp ? get() : {}
     const typeOptions = typeOf(options)
-    const onResize = () => {
-      const {
-        innerWidth: width,
-        innerHeight: height,
-      } = window
-      const isPortrait = width < height
-
-      Object.values(window._WZD)
-        .forEach((callBack) => {
-          callBack({
-            width,
-            height,
-            minSize: isPortrait ? width : height,
-            maxSize: isPortrait ? height : width,
-            isPortrait,
-            isLandscape: !isPortrait,
-          })
-        })
-    }
     if (typeOptions !== 'Function') {
       console.error(`The options of WindowSize must be a Function! Got ${typeOptions}. Error on Element:\n${getSelector(el)}`)
       return
@@ -88,9 +88,13 @@ export function windowSizeDirective(context) {
       window._WZD = {
         [exp]: options,
       }
-      onResize()
-      window.addEventListener('resize', onResize)
+      window.addEventListener('resize', update)
     }
     window._WZD[exp] = options
+    update()
+  }
+
+  effect(() => {
+    setup()
   })
 }
