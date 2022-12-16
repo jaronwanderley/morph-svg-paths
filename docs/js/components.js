@@ -11,6 +11,7 @@ export function Body() {
     repository: 'jaronwanderley/morph-svg-paths',
     version: '0.0.0',
     isLandscape: false,
+    showAlert: false,
     async loadData() {
       const github = `https://raw.githubusercontent.com/${this.repository}`
       try {
@@ -30,6 +31,9 @@ export function Body() {
     },
     onResize({ isLandscape }) {
       this.isLandscape = isLandscape
+    },
+    onInteract() {
+      setTimeout(() => this.showAlert = true, 5000)
     },
   }
 }
@@ -52,7 +56,7 @@ export function Morph() {
     updatePercentage(index, event) {
       this.percentages[index] = +event.target.value
     },
-    onInteract(event) {
+    onPlay(event) {
       if (this.showInfo)
         setTimeout(() => this.showInfo = false, 1000)
 
