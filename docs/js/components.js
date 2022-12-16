@@ -1,5 +1,5 @@
 import { morphPaths } from 'https://unpkg.com/@jrnwn/morph-svg-paths@0.0.1/dist/morph-svg-paths.js?module'
-import { clamp, getDistance, loadJson, loadText, platform } from 'https://unpkg.com/@jrnwn/utils@0.0.1/dist/utils.iife.js'
+import { clamp, getDistance, loadJson, loadText, platform } from 'https://unpkg.com/@jrnwn/utils@0.0.1/dist/utils.js?module'
 import { toHtml } from './markdown.js'
 
 export function Body() {
@@ -10,6 +10,7 @@ export function Body() {
     explanation: '',
     repository: 'jaronwanderley/morph-svg-paths',
     version: '0.0.0',
+    isLandscape: false,
     async loadData() {
       const github = `https://raw.githubusercontent.com/${this.repository}`
       try {
@@ -27,6 +28,9 @@ export function Body() {
         console.error(error)
       }
     },
+    onResize({ isLandscape }) {
+      this.isLandscape = isLandscape
+    },
   }
 }
 
@@ -41,7 +45,6 @@ export function Morph() {
       'm 0 0 c -1.7  9.5 -3.3  19.1 -5     28.6 c -9.1 1.2 -18.3 2.4  -27.4 3.6  c 9.1 1.9 18.3 3.8  27.4 5.7  c 1.7 9   3.3  18.1 5     27.1 c 1.5 -9 3 -18.1  4.5 -27.1       c 9.3 -1.9 18.7 -3.8 28 -5.7     c -9.3 -1.4 -18.7 -2.7  -28   -4.1  c -1.5 -9.4 -3    -18.7 -4.5  -28.1 z',
     ],
     percentages: [0, 0.5, 0, 0.5],
-    svgHeight: 0,
     lightPosition: 0,
     get morphPath() {
       return morphPaths(this.paths)(this.percentages)
@@ -82,10 +85,6 @@ export function Morph() {
 
       this.percentages = percentages
       this.lightPosition = -point.x * 10 + 5
-    },
-    onResize(context) {
-      const { minSize, isLandscape } = context
-      this.svgHeight = isLandscape ? minSize - 282 : minSize
     },
   }
 }
