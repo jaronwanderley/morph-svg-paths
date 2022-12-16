@@ -60,6 +60,7 @@
       class="flex flex-col items-center justify-center"
     >
       <img src="./assets/jrnwn-logo.svg" alt="this is a jaron wanderley's logo" class="w-40">
+      <h1>Morph SVG Paths</h1>
       <ul class="flex list-none gap-2 pl-0 mt-0" :class="{'flex-col': isLandscape}">
         <li 
           @click="showSheet = true" 
@@ -69,7 +70,7 @@
           <span class="hidden sm:inline">
             How to use
           </span>
-          <svg width="24" height="24" class="ml-2 fill-none stroke-current stroke-2 stroke-round">
+          <svg width="24" height="24" class="sm:ml-2 fill-none stroke-current stroke-2 stroke-round">
             <circle cx="12" cy="12" r="9"></circle>
             <line x1="12" y1="8" x2="12.01" y2="8"></line>
             <polyline points="11 12 12 12 12 16 13 16"></polyline>
