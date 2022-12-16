@@ -94,31 +94,37 @@
     <!-- main content -->
     <main v-scope="Morph()" class="flex-1 px-4 flex justify-center items-center">
       <div class="relative w-full h-full flex justify-center items-center">
-        <svg @mousemove="onInteract" @touchmove.prevent="onInteract" v-w-size="onResize" :height="svgHeight"
-          class="max-h-80vmin bg-blue-3/30 h-full rounded-3 border-blue/50 border-3 backdrop-blur-sm shadow-inner shadow-blue-9/30"
-          ViewBox="0 0 100 100">
-          <linearGradient id="g1" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stop-color="#42cafd" />
-            <stop offset="100%" stop-color="#0284c7" />
-          </linearGradient>
-          <linearGradient id="g2" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stop-color="#fff5" />
-            <stop offset="100%" stop-color="#fff0" />
-          </linearGradient>
+        <div v-ripple="{
+            set: 'w-0 h-0 rounded-full bg-orange/50 absolute transition duration-600 ease-out', 
+            start: 'scale-0 opacity-100',
+            end: 'scale-250 opacity-0',
+          }" :style="{height: `${svgHeight}px`}"
+          class="max-h-80vmin bg-blue-3/30 h-full rounded-3 border-blue/50 border-3 backdrop-blur-sm shadow-inner shadow-blue-9/30">
+          <svg @mousemove="onInteract" @touchmove.prevent="onInteract" v-w-size="onResize" ViewBox="0 0 100 100"
+            class="h-full">
+            <linearGradient id="g1" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#42cafd" />
+              <stop offset="100%" stop-color="#0284c7" />
+            </linearGradient>
+            <linearGradient id="g2" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#fff5" />
+              <stop offset="100%" stop-color="#fff0" />
+            </linearGradient>
 
-          <g class="pointer-events-none">
-            <path
-              d="m 10 0 h 10 l -45 100 h -10 z m 15 0 h 30 l -45 100 h -30 z m 33 0 h 3 l -45 100 h -3 z m 30 0 h 8 l -45 100 h -8 z m 20 0 h 20 l -45 100 h -20 z m 22 0 h 3 l -45 100 h -3 z"
-              fill="url(#g2)" :transform="`translate(${lightPosition} 0)`" />
-            <path :d="morphPath" fill="url(#g1)" transform="translate(50 15)" />
-          </g>
+            <g class="pointer-events-none">
+              <path
+                d="m 10 0 h 10 l -45 100 h -10 z m 15 0 h 30 l -45 100 h -30 z m 33 0 h 3 l -45 100 h -3 z m 30 0 h 8 l -45 100 h -8 z m 20 0 h 20 l -45 100 h -20 z m 22 0 h 3 l -45 100 h -3 z"
+                fill="url(#g2)" :transform="`translate(${lightPosition} 0)`" />
+              <path :d="morphPath" fill="url(#g1)" transform="translate(50 15)" />
+            </g>
 
-          <text x="50%" y="90%" dominant-baseline="middle" text-anchor="middle" font-size=".35rem"
-            class="pointer-events-none transition duration-300 ease-out" :style="{opacity: !showInfo ? 0 : 1}">
-            <tspan v-if="isMobile">Touch and move on this frame.</tspan>
-            <tspan v-else>Move the cursor over this frame.</tspan>
-          </text>
-        </svg>
+            <text x="50%" y="90%" dominant-baseline="middle" text-anchor="middle" font-size=".35rem"
+              class="pointer-events-none transition duration-300 ease-out" :style="{opacity: !showInfo ? 0 : 1}">
+              <tspan v-if="isMobile">Touch and move on this frame.</tspan>
+              <tspan v-else>Move the cursor over this frame.</tspan>
+            </text>
+          </svg>
+        </div>
       </div>
     </main>
 
@@ -148,11 +154,13 @@
           </div>
           <h1 class="text-2xl my-0 font-semibold leading-7 flex items-center">
             How to Use
-            <span class="bg-primary font-normal text-xs text-white rounded-full px-3 py-1 ml-2">version {{ version }}</span>
+            <span class="bg-primary font-normal text-xs text-white rounded-full px-3 py-1 ml-2">version {{ version
+              }}</span>
           </h1>
         </div>
         <!-- content of bottomsheet -->
-        <div class="relative pt-16   overflow-x-hidden overflow-y-auto overscroll-contain" style="--bar-start: 76px; --bar-end: 10px">
+        <div class="relative pt-16   overflow-x-hidden overflow-y-auto overscroll-contain"
+          style="--bar-start: 76px; --bar-end: 10px">
           <div class="px-6 pt-2 pb-6" v-html="explanation"></div>
         </div>
       </div>
